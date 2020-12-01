@@ -17,5 +17,5 @@ for line in Lines:
     print(line, ' ', NAME.text, ' ', GPA.text)  # Can also be  written to a file for future use.
     driver.close()
     driver.switch_to.window(driver.window_handles[0])
-    break
+
 # driver.close()
