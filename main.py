@@ -6,7 +6,7 @@ driver.get('http://gradesresults.griet.in/results.php?result=GR18:2019-20:A:110:
 
 File = open('ID.txt', 'r')
 Lines = File.read().splitlines()
-# Output = open('CGPA.txt', 'w') External text file to print contents.
+Output = open('CGPA.txt', 'w')
 
 for line in Lines:
     driver.find_element_by_xpath('//*[@id="content"]/table[2]/tbody/tr[1]/td[3]/input').clear()
@@ -14,8 +14,9 @@ for line in Lines:
     driver.switch_to.window(driver.window_handles[1])
     NAME = driver.find_element_by_xpath('/html/body/table[3]/tbody/tr[1]/td[3]')
     GPA = driver.find_element_by_xpath("/html/body/table[6]/tbody/tr/td[4]")
-    print(line, ' ', NAME.text, ' ', GPA.text)  # Can also be  written to a file for future use.
+    string = (line + ' ' + NAME.text + ' ' + GPA.text + '\n')
+    # print(line, ' ', NAME.text, ' ', GPA.text)
+    Output.write(string)
     driver.close()
     driver.switch_to.window(driver.window_handles[0])
-    break
 # driver.close()
